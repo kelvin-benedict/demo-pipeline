@@ -152,7 +152,7 @@ function App() {
       <nav className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center h-16 gap-4">
-            <img src="/ama_logo.png" alt="AMA Logo" className="h-10 w-10 object-contain" />
+            <img src={`${import.meta.env.BASE_URL}ama_logo.png`} alt="AMA Logo" className="h-10 w-10 object-contain" />
             <h1
               className="text-xl font-bold tracking-wider"
               style={{
