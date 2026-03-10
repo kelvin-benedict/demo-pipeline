@@ -44,106 +44,42 @@ const StructureIcon = () => (
   </svg>
 )
 
-const products = [
-  {
-    id: 1,
-    title: 'Timesheets & Expenses',
-    description: 'Track consultant hours, manage expenses, handle approvals, and generate invoices.',
-    icon: TimesheetIcon,
-    status: 'active',
-    url: 'https://web-production-d744.up.railway.app',
-  },
+const featuredProduct = {
+  id: 1,
+  title: 'Timesheets & Expenses',
+  description: 'Full-featured timesheet and expense management for engineering consulting firms.',
+  icon: TimesheetIcon,
+  url: 'https://web-production-d744.up.railway.app',
+  features: [
+    'Timesheet entry with multi-project tracking and task-level detail',
+    'Expense management with trip grouping, per diem, and receipt upload',
+    'Multi-tier approval workflows for timesheets and expenses',
+    'Client & project administration with budget tracking',
+    'Document builders for timesheet and expense invoicing',
+    'Role-based access: Consultant, Approver, and Admin views',
+  ],
+}
+
+const upcomingProducts = [
   {
     id: 2,
     title: 'P&ID Management',
     description: 'Manage piping and instrumentation diagrams with collaborative review tools.',
     icon: PidIcon,
-    status: 'coming-soon',
-    url: null,
   },
   {
     id: 3,
     title: 'Structuring',
     description: 'Design and manage organizational structures and project frameworks.',
     icon: StructureIcon,
-    status: 'coming-soon',
-    url: null,
   },
 ]
 
-function ProductCard({ product }) {
-  const isActive = product.status === 'active'
-  const Icon = product.icon
-
-  return (
-    <div
-      className={`
-        relative bg-white rounded-2xl shadow-md overflow-hidden
-        transition-all duration-300 flex flex-col
-        ${isActive
-          ? 'hover:shadow-xl hover:-translate-y-1 cursor-pointer border-l-4 border-l-primary-dark'
-          : 'opacity-60 cursor-default'
-        }
-      `}
-    >
-      {/* Top accent gradient for active cards */}
-      {isActive && (
-        <div
-          className="h-1"
-          style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
-          }}
-        />
-      )}
-
-      <div className="p-8 flex flex-col flex-1">
-        {/* Icon */}
-        <div className={`mb-5 ${isActive ? 'text-primary-dark' : 'text-gray-400'}`}>
-          <Icon />
-        </div>
-
-        {/* Title */}
-        <h3 className={`text-xl font-semibold mb-3 ${isActive ? 'text-dark' : 'text-gray-500'}`}>
-          {product.title}
-        </h3>
-
-        {/* Description */}
-        <p className={`text-sm leading-relaxed mb-6 flex-1 ${isActive ? 'text-gray-600' : 'text-gray-400'}`}>
-          {product.description}
-        </p>
-
-        {/* Action */}
-        {isActive ? (
-          <a
-            href={product.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-primary-dark hover:bg-primary text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 text-sm"
-          >
-            Launch Demo
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        ) : (
-          <span className="inline-flex items-center justify-center gap-2 bg-gray-200 text-gray-500 font-medium py-3 px-6 rounded-lg text-sm">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Coming Soon
-          </span>
-        )}
-      </div>
-
-      {/* Coming Soon badge */}
-      {!isActive && (
-        <div className="absolute top-4 right-4 bg-gray-300 text-gray-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
-          Coming Soon
-        </div>
-      )}
-    </div>
-  )
-}
+const demoPersonas = [
+  { role: 'Consultant', name: 'John Mitchell', desc: 'Enter time and expenses, view personal reports' },
+  { role: 'Approver', name: 'Sarah Chen', desc: 'Review and approve team timesheets and expenses' },
+  { role: 'Admin', name: 'Michael Torres', desc: 'Full access to clients, projects, users, and invoicing' },
+]
 
 function App() {
   return (
@@ -166,7 +102,6 @@ function App() {
             </h1>
           </div>
         </div>
-        {/* Gradient divider */}
         <div
           className="h-0.5"
           style={{
@@ -175,10 +110,9 @@ function App() {
         />
       </nav>
 
-      {/* Main content */}
       <main className="flex-1">
-        {/* Hero section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 text-center">
+        {/* Hero */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-dark mb-4">
             Welcome to the{' '}
             <span
@@ -192,15 +126,109 @@ function App() {
             </span>
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            Explore our suite of engineering and project management tools. Launch live demos or check back for upcoming products.
+            Explore our suite of engineering and project management tools. Launch a live demo below or check back for upcoming products.
           </p>
         </section>
 
-        {/* Product cards */}
+        {/* Featured Product */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+            <div
+              className="h-1.5"
+              style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
+              }}
+            />
+            <div className="p-8 md:p-10 lg:p-12">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                {/* Left: Info */}
+                <div className="flex-1">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="text-primary-dark">
+                      <featuredProduct.icon />
+                    </div>
+                    <div>
+                      <span className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wide mb-1">
+                        Live Demo
+                      </span>
+                      <h3 className="text-2xl font-bold text-dark">{featuredProduct.title}</h3>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {featuredProduct.description}
+                  </p>
+                  <ul className="space-y-2.5 mb-8">
+                    {featuredProduct.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600">
+                        <svg className="w-4 h-4 text-primary-dark mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={featuredProduct.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-primary-dark hover:bg-primary text-white font-medium py-3.5 px-8 rounded-lg transition-colors duration-200 text-base shadow-sm"
+                  >
+                    Launch Demo
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+
+                {/* Right: How It Works */}
+                <div className="lg:w-80 xl:w-96 bg-gray-50 rounded-xl p-6 lg:p-8">
+                  <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">How It Works</h4>
+                  <p className="text-sm text-gray-600 mb-5 leading-relaxed">
+                    The demo includes a <strong>role switcher toolbar</strong> at the top of the page. Click any persona to instantly switch between different user roles and see the app from their perspective.
+                  </p>
+                  <div className="space-y-3">
+                    {demoPersonas.map((p) => (
+                      <div key={p.role} className="bg-white rounded-lg px-4 py-3 shadow-sm border border-gray-100">
+                        <div className="flex items-center gap-2 mb-0.5">
+                          <span className="w-2 h-2 rounded-full bg-primary-dark shrink-0" />
+                          <span className="font-semibold text-sm text-dark">{p.role}</span>
+                          <span className="text-xs text-gray-400 ml-auto">{p.name}</span>
+                        </div>
+                        <p className="text-xs text-gray-500 pl-4">{p.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400 mt-4 leading-relaxed">
+                    Data can be reset at any time via the toolbar. All demo data is pre-populated with realistic consulting scenarios.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Upcoming Products */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+          <h3 className="text-lg font-semibold text-gray-400 uppercase tracking-wide mb-6">Coming Soon</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {upcomingProducts.map((product) => (
+              <div
+                key={product.id}
+                className="relative bg-white rounded-xl shadow-sm overflow-hidden opacity-60 border border-gray-100"
+              >
+                <div className="p-6 flex items-start gap-5">
+                  <div className="text-gray-400 shrink-0">
+                    <product.icon />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-500 mb-1">{product.title}</h4>
+                    <p className="text-sm text-gray-400 leading-relaxed">{product.description}</p>
+                  </div>
+                </div>
+                <div className="absolute top-4 right-4 bg-gray-200 text-gray-500 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wide">
+                  Coming Soon
+                </div>
+              </div>
             ))}
           </div>
         </section>
