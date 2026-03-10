@@ -88,24 +88,22 @@ function App() {
       <nav className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center h-16 gap-4">
-            <img src={`${import.meta.env.BASE_URL}ama_logo.png`} alt="AMA Logo" className="h-10 w-10 object-contain" />
+            <img src={`${import.meta.env.BASE_URL}ama_logo.png`} alt="AMA Logo" className="h-12 w-auto object-contain" />
             <h1
               className="text-xl font-bold tracking-wider"
               style={{
-                fontFamily: 'Orbitron, sans-serif',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #9394C3 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                fontFamily: 'Inter, sans-serif',
+                color: '#7678A8',
               }}
             >
-              AMA Demo Portal
+              AMA Showcase
             </h1>
           </div>
         </div>
         <div
           className="h-0.5"
           style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
+            background: 'linear-gradient(to right, #9393C3, #DAA520, #93C3C0)',
           }}
         />
       </nav>
@@ -114,15 +112,15 @@ function App() {
         {/* Hero */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-dark mb-4">
-            Welcome to the{' '}
+            Welcome to{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #9394C3 100%)',
+                background: 'linear-gradient(135deg, #9393C3 0%, #DAA520 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              AMA Demo Portal
+              AMA Showcase
             </span>
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
@@ -136,7 +134,7 @@ function App() {
             <div
               className="h-1.5"
               style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
+                background: 'linear-gradient(to right, #9393C3, #DAA520, #93C3C0)',
               }}
             />
             <div className="p-8 md:p-10 lg:p-12">
@@ -239,12 +237,12 @@ function App() {
         <div
           className="h-0.5"
           style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
+            background: 'linear-gradient(to right, #9393C3, #DAA520, #93C3C0)',
           }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} AMA Advocate. All rights reserved.
+            &copy; {new Date().getFullYear()} AMA. All rights reserved.
           </p>
         </div>
       </footer>
